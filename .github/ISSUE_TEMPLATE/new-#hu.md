@@ -1,5 +1,5 @@
 ---
-name: 'New #HU'
+name: 'New #UH'
 about: Añade una nueva Historia de Usuario al proyecto
 title: "[HU] #"
 labels: HU
