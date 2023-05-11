@@ -7,7 +7,7 @@ class User
     private int $id;
     private string $email;
 
-    private boolean $has_wallet;
+    private bool $has_wallet;
     private array $array_wallet;
 
     public function __construct(int $id, string $email)
@@ -27,7 +27,7 @@ class User
         $wallet = new Wallet($this->id);
         array_push($this->array_wallet,$wallet);
     }
-    public function hasUserWallet(): boolean{
+    public function hasUserWallet(): bool{
         return $this->has_wallet;
     }
 }

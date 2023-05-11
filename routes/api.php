@@ -1,8 +1,6 @@
 <?php
 
-use App\Infrastructure\Controllers\GetCoinBuyController;
-use App\Infrastructure\Controllers\GetUserController;
-use App\Infrastructure\Controllers\IsEarlyAdopterUserController;
+use App\Infrastructure\Controllers\GetWalletOpenController;
 use App\Infrastructure\Controllers\GetStatusController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/status', GetStatusController::class);
-Route::get('/coin/buy', GetCoinBuyController::class);
+Route::get('/coin/buy/{id}', GetWalletOpenController::class);
