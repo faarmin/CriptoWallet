@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="MessDetectorOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>
@@ -144,5 +145,9 @@
   </component>
   <component name="PsalmOptionsConfiguration">
     <option name="transferred" value="true" />
+=======
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+>>>>>>> 569e324a808c3d86cd781aa0c85cc0d8a27c1ca0
   </component>
 </project>
