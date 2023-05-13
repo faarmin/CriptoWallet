@@ -21,6 +21,11 @@ class GetWalletOpenController extends BaseController
     {
         $users= $this->userDataSource->getAll();
         //recorrer los usuarios y ver si existe alguno con el id del parametro
+        if($users == null){
+            return response()->json([
+                'message' => 'bad request',
+            ], Response::HTTP_BAD_REQUEST);
+        }
         foreach ($users as $user ){
             if($user->getId() == $id){
                 return response()->json([
