@@ -4,12 +4,13 @@ namespace Tests\app\Infrastructure\Controller;
 
 use App\Application\UserDataSource\UserDataSource;
 use App\Domain\User;
+use App\Domain\Wallet;
 use Exception;
 use Illuminate\Http\Response;
 use Mockery;
 use Tests\TestCase;
 
-class GetWalletOpenControllerTest extends TestCase
+class GetWalletCriptosControllerTest extends TestCase
 {
     private UserDataSource $userdata;
     /**
@@ -23,40 +24,45 @@ class GetWalletOpenControllerTest extends TestCase
             return $this->userdata;
         });
     }
+
     /**
      * @test
      */
-    public function errorOpeningWithIdExisted()
+    public function successfulOperationCompleted()
     {
         $this->userdata
-            ->expects('getAll')
-            ->andReturn([new User(1, "email@email.com"), new User(2, "another_email@email.com")]);
-        $response = $this->get('/api/wallet/open/1');
+            ->expects('findWalletById')
+            ->with(6666)
+            ->andReturn(new Wallet(6666));
+
+        $response = $this->get('/api/wallet/6666');
         $response->assertExactJson(['status' => 'Ok', 'message' => 'successful operation']);
-    }
-    /**
-     * @test
-     */
-    public function errorOpeningWithIdNotExisted()
-    {
-        $this->userdata
-            ->expects('getAll')
-            ->andReturn([new User(1, "email@email.com"), new User(2, "another_email@email.com")]);
-        $response = $this->get('/api/wallet/open/10');
-        $response->assertNotFound();
-        $response->assertExactJson(['message' => 'A user with the specified ID was not found.']);
     }
 
     /**
      * @test
      */
-    public function errorOpeningWithIdButErrorRequest()
+    public function errorNotWalletFoundWithGivenId()
     {
         $this->userdata
-            ->expects('getAll')
+            ->expects('findWalletById')
+            ->with(6666)
             ->andReturnNull();
-        $response = $this->get('/api/wallet/open/10');
-        $response->assertBadRequest();
-        $response->assertExactJson(['message' => 'bad request']);
+
+        $response = $this->get('/api/wallet/6666');
+        $response->assertNotFound();
+        $response->assertExactJson(['message' => 'A wallet with the specified ID was not found.']);
     }
+
+/*
+    public function errorNotValidId()
+    {
+        $this->userdata
+            ->expects('findWalletById')
+            ->andReturnNull();
+
+        $response = $this->get('/api/wallet/');
+        $response->assertBadRequest();
+        $response->assertExactJson(['message' => 'bad request error']);
+    }*/
 }
