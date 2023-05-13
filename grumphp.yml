@@ -1,0 +1,12 @@
+grumphp:
+    tasks: { 
+        phpcs: {
+            standard: [PSR12]
+        } 
+        phpmd: {
+            ruleset: ['cleancode', 'codesize', 'naming']
+        }
+        phpunit: {
+            
+        }
+    }
