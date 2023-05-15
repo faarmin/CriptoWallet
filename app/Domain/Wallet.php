@@ -4,22 +4,25 @@ namespace App\Domain;
 
 class Wallet
 {
-    private int $id_user;
+    private int $id_wallet;
     private array $array_coins;
-    public function __construct(int $id)
+    public function __construct(int $id_wallet)
     {
-        $this->id_user = $id;
+        $this->id_wallet = $id_wallet;
     }
     public function getIdUser(): int
     {
         return $this->id_user;
     }
-    public function setCoin(): void{
-        $id=0;
-        $coin = new Coin($id);
-        array_push($this->array_coins,$coin);
+    public function setCoin(): void
+    {
+        $id_coin = 0;
+        $coin = new Coin($id_coin);
+        array_push($this->array_coins, $coin);
     }
-    public function getWallet(): array{
-        return $this->array_wallet;
+
+    public function getWalletContent(): array
+    {
+        return $this->array_coins;
     }
 }

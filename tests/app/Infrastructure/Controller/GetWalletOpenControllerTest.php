@@ -15,7 +15,7 @@ class GetWalletOpenControllerTest extends TestCase
     /**
      * @setUp
      */
-    protected function setUp():void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->userdata = \Mockery::mock(UserDataSource::class);
@@ -26,7 +26,7 @@ class GetWalletOpenControllerTest extends TestCase
     /**
      * @test
      */
-    public function ErrorOpeningWithIdExisted()
+    public function errorOpeningWithIdExisted()
     {
         $this->userdata
             ->expects('getAll')
@@ -37,7 +37,7 @@ class GetWalletOpenControllerTest extends TestCase
     /**
      * @test
      */
-    public function ErrorOpeningWithIdNotExisted()
+    public function errorOpeningWithIdNotExisted()
     {
         $this->userdata
             ->expects('getAll')
@@ -46,10 +46,11 @@ class GetWalletOpenControllerTest extends TestCase
         $response->assertNotFound();
         $response->assertExactJson(['message' => 'A user with the specified ID was not found.']);
     }
+
     /**
      * @test
      */
-    public function ErrorOpeningWithIdButErrorRequest()
+    public function errorOpeningWithIdButErrorRequest()
     {
         $this->userdata
             ->expects('getAll')
@@ -58,5 +59,4 @@ class GetWalletOpenControllerTest extends TestCase
         $response->assertBadRequest();
         $response->assertExactJson(['message' => 'bad request']);
     }
-
 }

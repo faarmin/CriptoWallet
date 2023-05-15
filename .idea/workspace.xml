@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="2d2276b7-eabf-47d4-92c8-6f7c075b79d5" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/app/Application/DataSource/CoinDataSource.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/Application/DataSource/WalletDataSource.php" afterDir="false" />
@@ -21,6 +22,9 @@
       <change beforePath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetStatusControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetStatusControllerTest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" afterDir="false" />
     </list>
+=======
+    <list default="true" id="2d2276b7-eabf-47d4-92c8-6f7c075b79d5" name="Changes" comment="" />
+>>>>>>> 7ee0347db462a49bc43a88e9271a30078abd8c0b
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,6 +36,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Domain/Wallet.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Application/UserDataSource/UserDataSource.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/phpunit.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/grumphp.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Infrastructure/Controllers/GetWalletCriptosController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Infrastructure/Persistence/FileUserDataSource.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Infrastructure/Controllers/GetWalletOpenController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetBuyCoinControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -144,6 +161,15 @@
       <path value="$PROJECT_DIR$/vendor/fakerphp/faker" />
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/phpro/grumphp-shim" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-local" />
+      <path value="$PROJECT_DIR$/vendor/phpmd/phpmd" />
+      <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/vendor/symfony/config" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/pdepend/pdepend" />
     </include_path>
   </component>
   <component name="ProjectId" id="2PTLVgybaWp2wx5nleObN1T7aNp" />
@@ -151,6 +177,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -173,16 +200,31 @@
     </key>
   </component>
   <component name="RunManager" selected="PHPUnit.GetStatusControllerTest">
+=======
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests" />
+    <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId">
+>>>>>>> 7ee0347db462a49bc43a88e9271a30078abd8c0b
     <configuration name="GetBuyCoinControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\app\Infrastructure\Controller\GetBuyCoinControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/PostBuyCoinControllerTest.php" scope="Class" />
       <method v="2" />
     </configuration>
-    <configuration name="GetCoinBuyControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\app\Infrastructure\Controller\GetCoinBuyControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" scope="Class" />
+    <configuration name="GetWalletCriptosControllerTest.SuccessfullOperationCompleted" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\app\Infrastructure\Controller\GetWalletCriptosControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" method="SuccessfullOperationCompleted" scope="Method" />
       <method v="2" />
     </configuration>
-    <configuration name="GetStatusControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
-      <TestRunner class="Tests\app\Infrastructure\Controller\GetStatusControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetStatusControllerTest.php" scope="Class" />
+    <configuration name="GetWalletCriptosControllerTest.errorNotValidId" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\app\Infrastructure\Controller\GetWalletCriptosControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" method="errorNotValidId" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\app\Infrastructure\Controller\GetWalletCriptosControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" method="errorNotWalletFoundWithGivenId" scope="Method" />
       <method v="2" />
     </configuration>
     <configuration name="GetWalletOpenControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
@@ -194,23 +236,32 @@
       <method v="2" />
     </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
-      <TestRunner scope="XML" />
+      <TestRunner directory="$PROJECT_DIR$/tests" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
       <item itemvalue="PHPUnit.Unnamed" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.SuccessfullOperationCompleted" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" />
       <item itemvalue="PHPUnit.GetBuyCoinControllerTest" />
       <item itemvalue="PHPUnit.GetWalletOpenControllerTest" />
-      <item itemvalue="PHPUnit.GetCoinBuyControllerTest" />
-      <item itemvalue="PHPUnit.GetStatusControllerTest" />
     </list>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="PHPUnit.GetStatusControllerTest" />
         <item itemvalue="PHPUnit.GetBuyCoinControllerTest" />
         <item itemvalue="PHPUnit.GetWalletOpenControllerTest" />
         <item itemvalue="PHPUnit.GetCoinBuyControllerTest" />
+=======
+        <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" />
+        <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
+        <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.SuccessfullOperationCompleted" />
+        <item itemvalue="PHPUnit.GetBuyCoinControllerTest" />
+        <item itemvalue="PHPUnit.GetWalletOpenControllerTest" />
+>>>>>>> 7ee0347db462a49bc43a88e9271a30078abd8c0b
       </list>
     </recent_temporary>
   </component>
@@ -228,11 +279,26 @@
       <workItem from="1683631446698" duration="2320000" />
       <workItem from="1683820900504" duration="6424000" />
       <workItem from="1683992530871" duration="962000" />
+<<<<<<< HEAD
       <workItem from="1684145521155" duration="4612000" />
+=======
+      <workItem from="1683995629870" duration="11146000" />
+>>>>>>> 7ee0347db462a49bc43a88e9271a30078abd8c0b
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
