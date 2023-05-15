@@ -2,7 +2,7 @@
 
 namespace Tests\app\Infrastructure\Controller;
 
-use App\Application\UserDataSource\UserDataSource;
+use App\Application\DataSource\UserDataSource;
 use App\Domain\Coin;
 use App\Domain\User;
 use Exception;
@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 use Mockery;
 use Tests\TestCase;
 
-class GetBuyCoinControllerTest extends TestCase
+class PostBuyCoinControllerTest extends TestCase
 {
     private UserDataSource $userdata;
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\UserDataSource;
+namespace App\Application\DataSource;
 
 use App\Domain\Coin;
 use App\Domain\User;
@@ -8,8 +8,6 @@ use App\Domain\User;
 Interface UserDataSource
 {
     public function findByEmail(string $email): ?User;
-    public function findCoinById(int $id): ?Coin;
-
     /**
      * @return User[]
      */
