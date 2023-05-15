@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2d2276b7-eabf-47d4-92c8-6f7c075b79d5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Infrastructure/Controllers/GetWalletCriptosController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-test-framework.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/src.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Application/UserDataSource/UserDataSource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Application/UserDataSource/UserDataSource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Domain/Wallet.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Domain/Wallet.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Infrastructure/Persistence/FileUserDataSource.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Infrastructure/Persistence/FileUserDataSource.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +21,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app/Domain/Wallet.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Application/UserDataSource/UserDataSource.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletCriptosControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Infrastructure/Controllers/GetWalletCriptosController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetWalletOpenControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Infrastructure/Persistence/FileUserDataSource.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Infrastructure/Controllers/GetWalletOpenController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetBuyCoinControllerTest.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
@@ -175,7 +165,7 @@
     <property name="settings.editor.selected.configurable" value="php.test.frameworks.configurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager" selected="PHPUnit.phpunit.xml">
+  <component name="RunManager" selected="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId">
     <configuration name="GetBuyCoinControllerTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
       <TestRunner class="Tests\app\Infrastructure\Controller\GetBuyCoinControllerTest" configuration_file="/var/www/html/phpunit.xml" file="$PROJECT_DIR$/tests/app/Infrastructure/Controller/GetBuyCoinControllerTest.php" scope="Class" />
       <method v="2" />
@@ -215,8 +205,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
         <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" />
+        <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
         <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.SuccessfullOperationCompleted" />
         <item itemvalue="PHPUnit.GetBuyCoinControllerTest" />
         <item itemvalue="PHPUnit.GetWalletOpenControllerTest" />
@@ -237,7 +227,7 @@
       <workItem from="1683631446698" duration="2320000" />
       <workItem from="1683820900504" duration="6424000" />
       <workItem from="1683992530871" duration="962000" />
-      <workItem from="1683995629870" duration="9773000" />
+      <workItem from="1683995629870" duration="10828000" />
     </task>
     <servers />
   </component>
