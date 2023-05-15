@@ -1,0 +1,14 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/modules.xml
+/php-test-framework.xml
+/php.xml
+/src.iml
+/vcs.xml
+/.gitignore
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml

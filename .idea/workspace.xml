@@ -197,11 +197,11 @@
     <list>
       <item itemvalue="PHPUnit.phpunit.xml" />
       <item itemvalue="PHPUnit.Unnamed" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.SuccessfullOperationCompleted" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
+      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" />
       <item itemvalue="PHPUnit.GetBuyCoinControllerTest" />
       <item itemvalue="PHPUnit.GetWalletOpenControllerTest" />
-      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.SuccessfullOperationCompleted" />
-      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotWalletFoundWithGivenId" />
-      <item itemvalue="PHPUnit.GetWalletCriptosControllerTest.errorNotValidId" />
     </list>
     <recent_temporary>
       <list>

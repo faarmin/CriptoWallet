@@ -1,12 +1,11 @@
 grumphp:
-    tasks: { 
-        phpcs: {
+    tasks:
+        phpcs:
             standard: [PSR12]
-        } 
-        phpmd: {
+        phpmd:
             ruleset: ['cleancode', 'codesize', 'naming']
-        }
-        phpunit: {
-            
-        }
-    }
+        phpunit:
+            always_execute: true
+    fixer:
+        enabled: true
+        fix_by_default: false
