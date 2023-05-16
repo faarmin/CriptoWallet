@@ -2,6 +2,8 @@
 
 namespace App\Infrastructure\Controllers;
 use App\Application\DataSource\UserDataSource;
+use App\Application\DataSource\WalletDataSource;
+use App\Application\Services\GetWalletOpenService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
@@ -9,6 +11,7 @@ use Illuminate\Routing\Controller as BaseController;
 class GetWalletOpenController extends BaseController
 {
     private UserDataSource $userDataSource;
+    private GetWalletOpenService $service_openwallet;
 
     /**
      * @param UserDataSource $userDataSource
@@ -16,26 +19,10 @@ class GetWalletOpenController extends BaseController
     public function __construct(UserDataSource $userDataSource)
     {
         $this->userDataSource = $userDataSource;
+        $this->service_openwallet= new GetWalletOpenService();
     }
-    public function __invoke(int $id): JsonResponse
+    public function __invoke(int $id_user): JsonResponse
     {
-        $users= $this->userDataSource->getAll();
-        //recorrer los usuarios y ver si existe alguno con el id del parametro
-        if($users == null){
-            return response()->json([
-                'message' => 'bad request',
-            ], Response::HTTP_BAD_REQUEST);
-        }
-        foreach ($users as $user ){
-            if($user->getId() == $id){
-                return response()->json([
-                    'status' => 'Ok',
-                    'message' => 'successful operation',
-                ], Response::HTTP_OK);
-            }
-        }
-        return response()->json([
-            'message' => 'A user with the specified ID was not found.',
-        ], Response::HTTP_NOT_FOUND);
+        return $this->service_openwallet->execute($id_user);
     }
 }

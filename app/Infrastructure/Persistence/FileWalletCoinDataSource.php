@@ -2,6 +2,8 @@
 
 namespace App\Infrastructure\Persistence;
 
+use Illuminate\Support\Facades\Schema;
+
 class FileWalletCoinDataSource
 {
     public function __invoke( )

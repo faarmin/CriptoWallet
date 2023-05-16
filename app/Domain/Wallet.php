@@ -12,7 +12,7 @@ class Wallet
     }
     public function getIdUser(): int
     {
-        return $this->id_user;
+        return $this->id_wallet;
     }
     public function setCoin(): void
     {

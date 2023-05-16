@@ -4,6 +4,7 @@ namespace App\Infrastructure\Persistence;
 use App\Application\DataSource\WalletDataSource;
 use App\Domain\Coin;
 use App\Domain\Wallet;
+use Illuminate\Support\Facades\Schema;
 
 class FileWalletDataSource implements WalletDataSource
 {
