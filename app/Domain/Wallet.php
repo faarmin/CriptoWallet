@@ -6,9 +6,12 @@ class Wallet
 {
     private int $id_wallet;
     private array $array_coins;
+    private double $balance;
+
     public function __construct(int $id_wallet)
     {
         $this->id_wallet = $id_wallet;
+        $this->balance = 0;
     }
     public function getIdUser(): int
     {
