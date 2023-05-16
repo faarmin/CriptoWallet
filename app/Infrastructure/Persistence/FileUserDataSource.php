@@ -6,29 +6,22 @@ use App\Application\DataSource\UserDataSource;
 use App\Domain\Coin;
 use App\Domain\User;
 use App\Domain\Wallet;
+use PHP_CodeSniffer\Util\Cache;
 
 class FileUserDataSource implements UserDataSource
 {
-    public function findByEmail(string $email): ?User
+
+    public function __invoke( )
     {
-        return new User(1, "email@email.com");
+        Schema::create('user', function($table)
+        {
+            $table->string('user_id')->unique();
+            $table->integer('expiration');
+        });
     }
-    public function getAll(): ?array
+    public function userExists(String $id_user): bool
     {
-        return [new User(1, "email@email.com"), new User(2, "another_email@email.com")];
+        return \Illuminate\Support\Facades\Cache::has($id_user);
     }
-<<<<<<< HEAD
-=======
-    public function findCoinById(int $id_coin): ?Coin
-    {
-        return new Coin(3);
-    }
-    public function findWalletById(int $wallet): ?Wallet
-    {
-        if ($wallet === null) {
-            return null;
-        }
-        return new Wallet(6666);
-    }
->>>>>>> 7ee0347db462a49bc43a88e9271a30078abd8c0b
-}
+
+

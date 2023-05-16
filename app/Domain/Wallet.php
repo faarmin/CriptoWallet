@@ -25,4 +25,5 @@ class Wallet
     {
         return $this->array_coins;
     }
+
 }
