@@ -7,12 +7,10 @@ use App\Domain\User;
 
 Interface UserDataSource
 {
-    /**
-     * @return User[]
-     */
-    public function getAll(): ?array;
 
-    public function userExists(String $id_user): bool;
+    public function findUserById(String $id_user): bool;
+    public function insertUser(string $id_user): User;
+    public function cleanCache(): bool;
 
 
 

@@ -6,7 +6,7 @@ use App\Domain\Wallet;
 
 Interface WalletDataSource
 {
-    public function insertWallet(string $id_wallet): void;
+    public function insertWallet(string $id_wallet): Wallet;
 
     public function findWalletById(string $id_wallet): ?Wallet;
 

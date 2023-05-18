@@ -4,12 +4,13 @@ namespace App\Application\Services;
 
 use App\Application\DataSource\UserDataSource;
 use App\Application\DataSource\WalletDataSource;
-use App\Infrastructure\Persistence\FileUserDataSource;
-use App\Infrastructure\Persistence\FileWalletDataSource;
+use App\Domain\Wallet;
+use App\Infrastructure\Persistence\CacheUserDataSource;
+use App\Infrastructure\Persistence\CacheWalletDataSource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
-class GetWalletOpenService
+class GetWalletService
 {
     private WalletDataSource $walletDataSource;
     private UserDataSource $userDataSource;
@@ -19,20 +20,17 @@ class GetWalletOpenService
      */
     public function __construct()
     {
-        $this->walletDataSource = new FileWalletDataSource();
-        $this->userDataSource = new FileUserDataSource();
+        $this->walletDataSource = new CacheWalletDataSource();
+        $this->userDataSource = new CacheUserDataSource();
     }
-    public function execute(string $id_user): JsonResponse
+    public function execute(string $id_user): mixed
     {
-        $existe_user=$this->userDataSource->userExists($id_user);
-        if($existe_user==null){
+        $user=$this->userDataSource->findUserById($id_user);
+        if($user==false){
             return response()->json([
                 'message' => 'A user with the specified ID was not found.',
             ], Response::HTTP_NOT_FOUND);
         }
-        return response()->json([
-            'status' => 'Ok',
-            'message' => 'successful operation',
-        ], Response::HTTP_OK);
+        return $this->walletDataSource->insertWallet($id_user);
     }
 }

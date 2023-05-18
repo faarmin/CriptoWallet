@@ -5,22 +5,17 @@ namespace App\Domain;
 class User
 {
     private int $id;
-    private string $email;
 
     private array $array_wallet;
 
-    public function __construct(int $id, string $email)
+    public function __construct(int $id)
     {
         $this->id = $id;
-        $this->email = $email;
     }
 
     public function getId(): int
     {
         return $this->id;
-    }
-    public function getEmail(): string{
-        return $this->email;
     }
     public function setWallet(): void{
         $id=0;
