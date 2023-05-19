@@ -8,4 +8,4 @@ grumphp:
             always_execute: true
     fixer:
         enabled: true
-        fix_by_default: false
+        fix_by_default: true

@@ -8,4 +8,12 @@ use App\Domain\User;
 Interface CoinDataSource
 {
     public function findCoinById(int $id_coin): ?Coin;
+
+    public function updateCoinData(): void;
+
+    public function setUSDValue(): double;
+
+    public function coinExists(): bool;
+
 }
+

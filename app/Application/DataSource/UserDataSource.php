@@ -7,11 +7,13 @@ use App\Domain\User;
 
 Interface UserDataSource
 {
-    public function findByEmail(string $email): ?User;
-    /**
-     * @return User[]
-     */
-    public function getAll(): ?array;
+
+    public function findUserById(String $id_user): bool;
+    public function insertUser(string $id_user): User;
+    public function cleanCache(): bool;
+
+
 
 
 }
+

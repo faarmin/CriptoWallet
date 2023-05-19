@@ -2,6 +2,8 @@
 
 namespace App\Domain;
 
+use PhpParser\Node\Expr\Cast\Double;
+
 class Wallet
 {
     private int $id_wallet;
@@ -12,13 +14,13 @@ class Wallet
     }
     public function getIdUser(): int
     {
-        return $this->id_user;
+        return $this->id_wallet;
     }
     public function setCoin(): void
     {
         $id_coin = 0;
         $coin = new Coin($id_coin);
-        array_push($this->array_coins, $coin);
+        $this->array_coins[] = $coin;
     }
 
     public function getWalletContent(): array
