@@ -7,13 +7,15 @@ use App\Domain\User;
 
 Interface CoinDataSource
 {
-    public function findCoinById(int $id_coin): ?Coin;
+    public function insertCoin(string $id_coin, string $symbol, string $name, float $value_usd): ?Coin;
+
+    public function findCoinById(string $id_coin): ?Coin;
 
     public function updateCoinData(): void;
 
-    public function setUSDValue(): double;
+    public function returnUSDValue(string $id_coin, float $amount): float;
 
-    public function coinExists(): bool;
+    public function coinExists(string $id_coin): bool;
 
 }
 

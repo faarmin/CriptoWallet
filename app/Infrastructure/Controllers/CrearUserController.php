@@ -3,7 +3,7 @@
 namespace App\Infrastructure\Controllers;
 use App\Application\DataSource\UserDataSource;
 use App\Application\DataSource\WalletDataSource;
-use App\Application\Services\GetWalletService;
+use App\Application\Services\CreateWalletService;
 use App\Infrastructure\Persistence\CacheUserDataSource;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;

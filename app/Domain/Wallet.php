@@ -6,13 +6,14 @@ use PhpParser\Node\Expr\Cast\Double;
 
 class Wallet
 {
-    private int $id_wallet;
+    private string $id_wallet;
     private array $array_coins;
-    public function __construct(int $id_wallet)
+    public function __construct(string $id_wallet)
     {
         $this->id_wallet = $id_wallet;
+        $this->array_coins=[];
     }
-    public function getIdUser(): int
+    public function getIdWallet(): string
     {
         return $this->id_wallet;
     }

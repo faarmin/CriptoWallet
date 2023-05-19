@@ -22,4 +22,17 @@ class GetWalletOpenControllerTest extends TestCase
             'message' => 'bad request error',
         ]);
     }
+
+
+    /**
+     * @test
+     */
+    public function CheckIfRequestFuncionIsReadyAndCallTheController()
+    {
+        $response = $this->post('/api/wallet/open',['user_id' => '1']);
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertExactJson([
+            'user_id' => 'user_1',
+        ]);
+    }
 }

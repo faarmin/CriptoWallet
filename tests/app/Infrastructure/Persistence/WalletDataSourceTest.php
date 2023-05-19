@@ -61,11 +61,21 @@ class WalletDataSourceTest extends TestCase
     /**
      * @test
      */
-    public function checkIfWalletExistsWithKeyWallet0()
+    public function checkIfWalletExistsWithIdAndSuccess()
     {
         Cache::shouldReceive('has')->once()->with('wallet_0')->andReturn(true);
         $class = new CacheWalletDataSource();
         $response = $class->walletExists('wallet_0');
         $this->assertEquals(true, $response);
+    }
+    /**
+     * @test
+     */
+    public function checkIfWalletExistsWithIdAndFail()
+    {
+        Cache::shouldReceive('has')->once()->with('wallet_10')->andReturn(false);
+        $class = new CacheWalletDataSource();
+        $response = $class->walletExists('wallet_10');
+        $this->assertEquals(false, $response);
     }
 }

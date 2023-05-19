@@ -2,7 +2,7 @@
 
 namespace Tests\app\Infrastructure\Controller;
 
-use App\Application\UserDataSource\UserDataSource;
+use App\Application\DataSource\UserDataSource;
 use App\Domain\User;
 use App\Domain\Wallet;
 use Exception;
