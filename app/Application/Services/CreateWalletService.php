@@ -6,6 +6,7 @@ use App\Application\DataSource\WalletDataSource;
 use App\Domain\Wallet;
 use App\Infrastructure\Persistence\CacheUserDataSource;
 use App\Infrastructure\Persistence\CacheWalletDataSource;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
@@ -26,10 +27,7 @@ class CreateWalletService
     {
         $user=$this->userDataSource->findUserById($id_user);
         if(!$user){
-            //Lanzar Excepcion
-            return response()->json([
-                'message' => 'A user with the specified ID was not found.',
-            ], Response::HTTP_NOT_FOUND);
+            throw new Exception("UserNotFound");
         }
         return $this->walletDataSource->insertWallet($id_user);
     }

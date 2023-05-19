@@ -16,13 +16,13 @@ class Coin
      * @param string $name
      * @param float $value_usd
      */
-    public function __construct(string $coin_id, string $symbol, string $name, float $value_usd)
+    public function __construct(string $coin_id, string $symbol, string $name, float $value_usd, float $amount)
     {
         $this->coin_id = $coin_id;
         $this->symbol = $symbol;
         $this->name = $name;
         $this->value_usd = $value_usd;
-        $this->amount = 0;
+        $this->amount = $amount;
     }
 
 
