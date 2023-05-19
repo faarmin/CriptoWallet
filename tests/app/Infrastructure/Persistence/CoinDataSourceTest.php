@@ -27,13 +27,13 @@ class CoinDataSourceTest extends TestCase
      */
     public function buyCoinErrorNotFound()
     {
-        try{
+        try {
             $class = new ApiCoinDataSource();
             $class->buyCoin("-1", 60);
 
             $this->fail("Se esperaba una excepción");
-        }catch(Exception $ex){
-            $this->assertEquals("El id de la coin no es correcto",$ex->getMessage());
+        } catch (Exception $ex) {
+            $this->assertEquals("El id de la coin no es correcto", $ex->getMessage());
         }
     }
 }
