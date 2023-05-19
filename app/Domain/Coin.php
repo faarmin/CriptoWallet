@@ -7,8 +7,8 @@ class Coin
     private string $id;
     private string $symbol;
     private string $name;
-    private double $value_usd;
-    private double $amount;
+    private float $value_usd;
+    private float $amount;
 
     /**
      * @param string $id

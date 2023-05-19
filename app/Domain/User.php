@@ -20,7 +20,7 @@ class User
     public function setWallet(): void{
         $id=0;
         $wallet = new Wallet($id);
-        array_push($this->array_wallet,$wallet);
+        $this->array_wallet[] = $wallet;
     }
     public function getWallet(): ?array{
         return $this->array_wallet;

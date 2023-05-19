@@ -14,7 +14,7 @@ class WalletDataSourceTest extends TestCase
     /**
      * @test
      */
-    public function insertWalletInCachewith1()
+    public function insertWalletInCacheWith1()
     {
         Cache::shouldReceive('put')->once()->with('wallet_1',['1',[]])->andReturn(new Wallet('1'));
         $class = new CacheWalletDataSource;
@@ -61,7 +61,7 @@ class WalletDataSourceTest extends TestCase
     /**
      * @test
      */
-    public function checkIfWalletExistsWithKeywallet_0()
+    public function checkIfWalletExistsWithKeyWallet_0()
     {
         Cache::shouldReceive('has')->once()->with('wallet_0')->andReturn(true);
         $class = new CacheWalletDataSource;

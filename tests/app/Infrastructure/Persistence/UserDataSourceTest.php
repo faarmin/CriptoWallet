@@ -37,9 +37,9 @@ class UserDataSourceTest extends TestCase
      */
     public function checkIfUserExistsInCacheAndFail()
     {
-        Cache::shouldReceive('has')->once()->with('-1')->andReturn(true);
+        Cache::shouldReceive('has')->once()->with('user_3')->andReturn(false);
         $class = new CacheUserDataSource();
-        $response = $class->findUserById('-1');
-        $this->assertEquals(true,$response);
+        $response = $class->findUserById('3');
+        $this->assertEquals(false,$response);
     }
 }

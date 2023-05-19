@@ -20,7 +20,7 @@ class Wallet
     {
         $id_coin = 0;
         $coin = new Coin($id_coin);
-        array_push($this->array_coins, $coin);
+        $this->array_coins[] = $coin;
     }
 
     public function getWalletContent(): array
