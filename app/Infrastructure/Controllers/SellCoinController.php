@@ -12,10 +12,10 @@ class SellCoinController
     private SellCoinService $service_sellCoin;
     public function __construct()
     {
-        $this->service_sellCoin= new SellCoinService();
+        $this->service_sellCoin = new SellCoinService();
     }
-    public function sell_coin(string $id_coin,string $id_wallet): bool
+    public function sell_coin(string $id_coin, string $id_wallet): bool
     {
-        return $this->service_sellCoin->execute($id_coin,$id_wallet);
+        return $this->service_sellCoin->execute($id_coin, $id_wallet);
     }
 }

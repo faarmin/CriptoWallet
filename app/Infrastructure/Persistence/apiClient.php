@@ -11,7 +11,7 @@ class apiClient
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://api.coinlore.net/api/ticker/?id='.$id_coin,
+            CURLOPT_URL => 'http://api.coinlore.net/api/ticker/?id=' . $id_coin,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,

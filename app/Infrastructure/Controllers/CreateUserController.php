@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
+
 use App\Application\DataSource\UserDataSource;
 use App\Application\DataSource\WalletDataSource;
 use App\Application\Services\CreateWalletService;
@@ -16,7 +17,7 @@ class CreateUserController extends BaseController
     private CacheUserDataSource $cacheUser;
     public function __construct()
     {
-        $this->cacheUser= new CacheUserDataSource();
+        $this->cacheUser = new CacheUserDataSource();
     }
     public function __invoke(string $id_user): JsonResponse
     {

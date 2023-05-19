@@ -13,7 +13,7 @@ class SellCoinFormRequest extends BaseController
     private SellCoinController $sell_coin_controller;
     public function __construct()
     {
-        $this->sell_coin_controller= new SellCoinController();
+        $this->sell_coin_controller = new SellCoinController();
     }
     public function __invoke(Request $request): JsonResponse
     {
@@ -28,6 +28,6 @@ class SellCoinFormRequest extends BaseController
         }
         $coinId = $request->input('coin_id');
         $walletId = $request->input('wallet_id');
-        return $this->sell_coin_controller->sell_coin($coinId,$walletId);
+        return $this->sell_coin_controller->sell_coin($coinId, $walletId);
     }
 }
