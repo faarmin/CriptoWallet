@@ -15,18 +15,9 @@ class CreateWalletController extends BaseController
     {
         $this->service_openwallet= new GetWalletService();
     }
-    public function __invoke(Request $request): JsonResponse
+    public function create_wallet(string $id_user): JsonResponse
     {
-        $validator = Validator::make($request->all(), [
-            'user_id' => 'required|string',
-        ]);
-        if ($validator->fails()) {
-            return response()->json([
-                'message' => 'bad request error',
-            ], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-        $userId = $request->input('user_id');
-        $respuesta = $this->service_openwallet->execute($userId);
+        $respuesta = $this->service_openwallet->execute($id_user);
         if ($respuesta instanceof \Illuminate\Http\JsonResponse) {
             return $respuesta;
         }

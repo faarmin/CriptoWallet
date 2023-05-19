@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Application\Services;
 
 use App\Application\DataSource\UserDataSource;
@@ -26,7 +25,7 @@ class GetWalletService
     public function execute(string $id_user): mixed
     {
         $user=$this->userDataSource->findUserById($id_user);
-        if($user==false){
+        if(!$user){
             return response()->json([
                 'message' => 'A user with the specified ID was not found.',
             ], Response::HTTP_NOT_FOUND);
