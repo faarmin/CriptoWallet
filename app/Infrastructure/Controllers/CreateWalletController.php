@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
-use App\Application\Services\GetWalletService;
+use App\Application\Services\CreateWalletService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Validator;
 
-class CreateWalletController extends BaseController
+class CreateWalletController
 {
-    private GetWalletService $service_openwallet;
+    private CreateWalletService $service_openwallet;
     public function __construct()
     {
-        $this->service_openwallet= new GetWalletService();
+        $this->service_openwallet= new CreateWalletService();
     }
     public function create_wallet(string $id_user): JsonResponse
     {
@@ -22,7 +22,7 @@ class CreateWalletController extends BaseController
             return $respuesta;
         }
         return response()->json([
-            'wallet_id' => 'wallet_'.$respuesta->getIdUser(),
+            'wallet_id' => 'wallet_'.$respuesta->getIdWallet(),
         ], Response::HTTP_OK);
     }
 }

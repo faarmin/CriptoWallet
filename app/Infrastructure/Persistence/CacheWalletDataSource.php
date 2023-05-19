@@ -11,8 +11,7 @@ class CacheWalletDataSource implements WalletDataSource
     public function insertWallet(string $id_wallet): Wallet
     {
         $wallet = new Wallet($id_wallet);
-        $array_coins=[];
-        Cache::put("wallet_".$id_wallet,[$id_wallet,$array_coins]);
+        Cache::put("wallet_".$id_wallet,[$id_wallet,$wallet->getWalletContent()]);
         return $wallet;
     }
     public function findWalletById(string $id_wallet): ?Wallet

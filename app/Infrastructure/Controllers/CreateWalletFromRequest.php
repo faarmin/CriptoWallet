@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
-use App\Application\Services\GetWalletService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
