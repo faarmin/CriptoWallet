@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
+
 use App\Application\DataSource\UserDataSource;
 use App\Application\DataSource\WalletDataSource;
 use App\Application\Services\CreateWalletService;
@@ -11,18 +12,18 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Validator;
 
-class CrearUserController extends BaseController
+class CreateUserController extends BaseController
 {
-    private CacheUserDataSource $cacheuser;
+    private CacheUserDataSource $cache_user;
     public function __construct()
     {
-        $this->cacheuser= new CacheUserDataSource();
+        $this->cache_user = new CacheUserDataSource();
     }
-    public function __invoke(string $id): JsonResponse
+    public function __invoke(string $id_user): JsonResponse
     {
-        $this->cacheuser->insertUser($id);
+        $this->cache_user->insertUser($id_user);
         return response()->json([
-            'user_id' => $id,
+            'user_id' => $id_user,
         ], Response::HTTP_OK);
     }
 }

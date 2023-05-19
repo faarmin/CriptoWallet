@@ -13,18 +13,18 @@ class CacheUserDataSource implements UserDataSource
 {
     public function findUserById(string $id_user): bool
     {
-        return Cache::has('user_'.$id_user);
+        return Cache::has('user_' . $id_user);
     }
     public function insertUser(string $id_user): User
     {
         $user = new User($id_user);
-        $wallet=null;
-        Cache::put("user_".$id_user,[$id_user,$wallet]);
+        $wallet = null;
+        Cache::put("user_" . $id_user, [$id_user,$wallet]);
         return $user;
     }
-    public function cleanCache(): bool{
+    public function cleanCache(): bool
+    {
         Cache::flush();
         return true;
     }
 }
-
