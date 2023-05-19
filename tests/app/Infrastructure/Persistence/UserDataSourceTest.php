@@ -17,10 +17,10 @@ class UserDataSourceTest extends TestCase
      */
     public function checkIfUserCanBeInsertedInCache()
     {
-        Cache::shouldReceive('put')->once()->with('user_0',['0',null])->andReturn(new User('0'));
+        Cache::shouldReceive('put')->once()->with('user_0', ['0',null])->andReturn(new User('0'));
         $class = new CacheUserDataSource();
         $response = $class->insertUser('0');
-        $this->assertEquals(new User('0'),$response);
+        $this->assertEquals(new User('0'), $response);
     }
     /**
      * @test
@@ -30,7 +30,7 @@ class UserDataSourceTest extends TestCase
         Cache::shouldReceive('has')->once()->with('user_0')->andReturn(true);
         $class = new CacheUserDataSource();
         $response = $class->findUserById('0');
-        $this->assertEquals(true,$response);
+        $this->assertEquals(true, $response);
     }
     /**
      * @test
@@ -40,6 +40,6 @@ class UserDataSourceTest extends TestCase
         Cache::shouldReceive('has')->once()->with('user_3')->andReturn(false);
         $class = new CacheUserDataSource();
         $response = $class->findUserById('3');
-        $this->assertEquals(false,$response);
+        $this->assertEquals(false, $response);
     }
 }
