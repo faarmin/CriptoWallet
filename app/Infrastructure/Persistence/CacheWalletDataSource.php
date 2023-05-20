@@ -18,12 +18,19 @@ class CacheWalletDataSource implements WalletDataSource
     }
     public function findWalletById(string $id_wallet): ?Wallet
     {
-        return Cache::get($id_wallet);
+        $wallet = Cache::get($id_wallet);
+        $new_wallet = new Wallet($wallet[0]);
+        $new_wallet->setCoin($wallet[1]);
+        return $new_wallet;
     }
-
+    public function insertNewObjectWallet(Wallet $wallet): void
+    {
+        $id_wallet = $wallet->getIdWallet();
+        Cache::put("wallet_".$id_wallet,[$id_wallet,$wallet->getWalletContent()]);
+    }
 
     public function walletExists(string $id_wallet): bool
     {
-        return Cache::has($id_wallet);//!=null;
+        return Cache::has($id_wallet);
     }
 }

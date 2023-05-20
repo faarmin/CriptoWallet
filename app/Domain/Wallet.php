@@ -11,7 +11,7 @@ class Wallet
     public function __construct(string $id_wallet)
     {
         $this->id_wallet = $id_wallet;
-        $this->array_coins=[];
+        $this->array_coins = [];
     }
     public function getIdWallet(): string
     {
