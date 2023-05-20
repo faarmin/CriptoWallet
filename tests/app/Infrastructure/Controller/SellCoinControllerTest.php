@@ -29,7 +29,7 @@ class SellCoinControllerTest extends TestCase
 
         $this->expectExceptionMessage("CoinNotFound");
 
-        $this->sellCoinController->sell_coin("-1", "1");
+        $this->sellCoinController->sell_coin("-1", "1",1);
     }
 
     /**
@@ -44,7 +44,7 @@ class SellCoinControllerTest extends TestCase
 
         $this->expectExceptionMessage("WalletNotFound");
 
-        $this->sellCoinController->sell_coin("1", "1");
+        $this->sellCoinController->sell_coin("1", "1", 9);
     }
 
     /**
@@ -64,7 +64,7 @@ class SellCoinControllerTest extends TestCase
 
         $this->expectExceptionMessage("CoinIsNotInWallet");
 
-        $this->sellCoinController->sell_coin("1", "1");
+        $this->sellCoinController->sell_coin("1", "1", 4);
     }
 
     /**
@@ -87,7 +87,7 @@ class SellCoinControllerTest extends TestCase
             ->with('wallet_1', ['1',[['1','Bitcoin','BTC','2000',1]]])
             ->andReturn(true);
 
-        $return = $this->sellCoinController->sell_coin("1", "1");
+        $return = $this->sellCoinController->sell_coin("1", "1" , 0);
 
         $this->assertTrue($return);
     }

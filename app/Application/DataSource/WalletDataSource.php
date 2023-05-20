@@ -12,5 +12,5 @@ interface WalletDataSource
 
     public function walletExists(string $id_wallet): bool;
 
-    public function sellCoin(Coin $coin, string $id_wallet): bool;
+    public function sellCoin(Coin $coin, string $id_wallet, int $cantidad): bool;
 }

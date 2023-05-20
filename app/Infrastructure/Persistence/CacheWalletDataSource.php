@@ -21,7 +21,7 @@ class CacheWalletDataSource implements WalletDataSource
         return Cache::has("wallet_" . $id_wallet);
     }
 
-    public function sellCoin(Coin $coin, string $id_wallet): bool
+    public function sellCoin(Coin $coin, string $id_wallet,int $cantidad): bool
     {
         $datosCoin = [$coin->getCoinId(),$coin->getName(),$coin->getSymbol(),$coin->getValueUsd(),$coin->getAmount()];
 
@@ -34,7 +34,11 @@ class CacheWalletDataSource implements WalletDataSource
             foreach ($arrayCoins as $indice => &$coin) {
                 if ($coin[0] == $datosCoin[0]) {
                     $encontrado=true;
-                    $coin[4] = $coin[4] - 1;
+                    if($cantidad > $coin[4]){
+                        throw new Exception("NotCoinsEnought");
+                    }else{
+                        $coin[4] = $coin[4] - $cantidad;
+                    }
                     if ($coin[4] == 0) {
                         unset($arrayCoins[$indice]);
                     }

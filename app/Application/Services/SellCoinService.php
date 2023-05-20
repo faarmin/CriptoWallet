@@ -23,7 +23,7 @@ class SellCoinService
         $this->cacheWalletDataSource = new CacheWalletDataSource();
         $this->apiCoinDataSource = new ApiCoinDataSource();
     }
-    public function execute(string $id_coin, string $id_wallet): mixed
+    public function execute(string $id_coin, string $id_wallet, int $cantidad): mixed
     {
         $wallet = $this->cacheWalletDataSource->walletExists($id_wallet);
         if (!$wallet) {
@@ -33,7 +33,7 @@ class SellCoinService
             if ($coin == null) {
                 throw new Exception('CoinNotFound');
             }
-            return $this->cacheWalletDataSource->sellCoin($coin, $id_wallet);
+            return $this->cacheWalletDataSource->sellCoin($coin, $id_wallet,$cantidad);
         }
     }
 }

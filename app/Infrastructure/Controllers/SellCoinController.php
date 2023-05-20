@@ -14,8 +14,8 @@ class SellCoinController
     {
         $this->service_sellCoin = new SellCoinService();
     }
-    public function sell_coin(string $id_coin, string $id_wallet): bool
+    public function sell_coin(string $id_coin, string $id_wallet, int $cantidad): bool
     {
-        return $this->service_sellCoin->execute($id_coin, $id_wallet);
+        return $this->service_sellCoin->execute($id_coin, $id_wallet,$cantidad);
     }
 }

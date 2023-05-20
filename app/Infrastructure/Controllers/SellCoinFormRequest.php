@@ -20,6 +20,7 @@ class SellCoinFormRequest extends BaseController
         $validator = Validator::make($request->all(), [
             'coin_id' => 'required|string',
             'wallet_id' => 'required|string',
+            'amount_usd' => 'required',
         ]);
         if ($validator->fails()) {
             return response()->json([
@@ -28,6 +29,7 @@ class SellCoinFormRequest extends BaseController
         }
         $coinId = $request->input('coin_id');
         $walletId = $request->input('wallet_id');
-        return $this->sell_coin_controller->sell_coin($coinId, $walletId);
+        $cantidad = $request->input('amount_usd');
+        return $this->sell_coin_controller->sell_coin($coinId, $walletId,$cantidad);
     }
 }
