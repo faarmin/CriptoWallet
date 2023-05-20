@@ -16,7 +16,7 @@ class GetWalletOpenControllerTest extends TestCase
      */
     public function errorOpeningWithIdString()
     {
-        $response = $this->post('/api/wallet/open',['wallet_id' => 1]);
+        $response = $this->post('/api/wallet/open',['user_id' => 1]);
         $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
         $response->assertExactJson([
             'message' => 'bad request error',

@@ -16,7 +16,7 @@ class CacheWalletDataSource implements WalletDataSource
         Cache::put("wallet_" . $id_wallet, [$id_wallet,$wallet->getWalletContent()]);
         return $wallet;
     }
-    public function findWalletById(string $id_wallet): bool
+    public function walletExists(string $id_wallet): bool
     {
         return Cache::has("wallet_" . $id_wallet);
     }
@@ -30,13 +30,18 @@ class CacheWalletDataSource implements WalletDataSource
         if (empty($arrayCoins)) {
             throw new Exception("CoinIsNotInWallet");
         } else {
+            $encontrado=false;
             foreach ($arrayCoins as $indice => &$coin) {
                 if ($coin[0] == $datosCoin[0]) {
+                    $encontrado=true;
                     $coin[4] = $coin[4] - 1;
                     if ($coin[4] == 0) {
                         unset($arrayCoins[$indice]);
                     }
                 }
+            }
+            if(!$encontrado){
+                throw new Exception("CoinIsNotInWallet");
             }
             return Cache::put("wallet_" . $id_wallet, [$id_wallet,$arrayCoins]);
         }

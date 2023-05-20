@@ -21,7 +21,6 @@ class WalletDataSourceTest extends TestCase
         $resultado = $class->insertWallet('1');
         $this->assertEquals(new Wallet('1'), $resultado);
     }
-
     /**
      * @test
      */
@@ -29,7 +28,7 @@ class WalletDataSourceTest extends TestCase
     {
         Cache::shouldReceive('has')->once()->with('1')->andReturn(true);
         $class = new CacheWalletDataSource();
-        $response = $class->findWalletById('1');
+        $response = $class->walletExists('1');
         $this->assertEquals(true, $response);
     }
 
@@ -64,7 +63,7 @@ class WalletDataSourceTest extends TestCase
     {
         Cache::shouldReceive('has')->once()->with('wallet_0')->andReturn(true);
         $class = new CacheWalletDataSource();
-        $response = $class->findWalletById('wallet_0');
+        $response = $class->walletExists('wallet_0');
         $this->assertEquals(true, $response);
     }
     /**
@@ -74,7 +73,7 @@ class WalletDataSourceTest extends TestCase
     {
         Cache::shouldReceive('has')->once()->with('wallet_10')->andReturn(false);
         $class = new CacheWalletDataSource();
-        $response = $class->findWalletById('wallet_10');
+        $response = $class->walletExists('wallet_10');
         $this->assertEquals(false, $response);
     }
 }

@@ -25,7 +25,7 @@ class SellCoinService
     }
     public function execute(string $id_coin, string $id_wallet): mixed
     {
-        $wallet = $this->cacheWalletDataSource->findWalletById($id_wallet);
+        $wallet = $this->cacheWalletDataSource->walletExists($id_wallet);
         if (!$wallet) {
             throw new Exception("WalletNotFound");
         } else {

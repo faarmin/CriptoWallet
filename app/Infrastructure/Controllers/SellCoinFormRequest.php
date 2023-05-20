@@ -15,7 +15,7 @@ class SellCoinFormRequest extends BaseController
     {
         $this->sell_coin_controller = new SellCoinController();
     }
-    public function __invoke(Request $request): JsonResponse
+    public function __invoke(Request $request): mixed
     {
         $validator = Validator::make($request->all(), [
             'coin_id' => 'required|string',
