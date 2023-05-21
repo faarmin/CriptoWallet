@@ -43,6 +43,7 @@ class WalletDataSourceTest extends TestCase
         $this->expectExceptionMessage("UserNotFound");
 
         $response = $this->post('/api/wallet/open', ['user_id' => '100000']);
+        $response->assertStatus(Response::HTTP_INTERNAL_SERVER_ERROR);
         $response->assertExactJson([
             'error' => 'There is no user white id 100000',
         ]);

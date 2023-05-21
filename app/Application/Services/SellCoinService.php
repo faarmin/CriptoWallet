@@ -1,14 +1,9 @@
 <?php
 
 namespace App\Application\Services;
-
-use App\Application\DataSource\UserDataSource;
-use App\Application\DataSource\WalletDataSource;
 use App\Infrastructure\Persistence\ApiCoinDataSource;
-use App\Infrastructure\Persistence\CacheUserDataSource;
 use App\Infrastructure\Persistence\CacheWalletDataSource;
-use Exception;
-use Illuminate\Http\Response;
+use PHPUnit\Util\Exception;
 
 class SellCoinService
 {
@@ -27,11 +22,11 @@ class SellCoinService
     {
         $wallet = $this->cacheWalletDataSource->walletExists($id_wallet);
         if (!$wallet) {
-            throw new Exception("WalletNotFound");
+            throw new Exception('WalletNotFound',1);
         } else {
-            $coin = $this->apiCoinDataSource->sellCoin($id_coin);
+            $coin = $this->apiCoinDataSource->sellCoin($id_coin,$cantidad);
             if ($coin == null) {
-                throw new Exception('CoinNotFound');
+                throw new Exception('CoinNotFound',2);
             }
             return $this->cacheWalletDataSource->sellCoin($coin, $id_wallet,$cantidad);
         }

@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
-
-use Barryvdh\Debugbar\Controllers\BaseController;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Validator;
 
 class SellCoinFormRequest extends BaseController
@@ -30,6 +29,13 @@ class SellCoinFormRequest extends BaseController
         $coinId = $request->input('coin_id');
         $walletId = $request->input('wallet_id');
         $cantidad = $request->input('amount_usd');
-        return $this->sell_coin_controller->sell_coin($coinId, $walletId,$cantidad);
+        $respuesta= $this->sell_coin_controller->sell_coin($coinId, $walletId,$cantidad);
+        if ($respuesta instanceof \Illuminate\Http\JsonResponse) {
+            return $respuesta;
+        }else{
+            return response()->json([
+                'mensaje' => 'Success selling coin',
+            ], Response::HTTP_OK);
+        }
     }
 }

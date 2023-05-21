@@ -23,7 +23,7 @@ class CreateWalletController
         }catch (Exception $ex){
             return response()->json([
                 'error' => 'There is no user white id '.$id_user,
-            ], Response::HTTP_OK);
+            ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
         if ($respuesta instanceof \Illuminate\Http\JsonResponse) {
             return $respuesta;

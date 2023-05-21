@@ -28,14 +28,14 @@ class CacheWalletDataSource implements WalletDataSource
         $datosWallet = Cache::get("wallet_" . $id_wallet);
         $arrayCoins = $datosWallet[1];
         if (empty($arrayCoins)) {
-            throw new Exception("CoinIsNotInWallet");
+            throw new Exception("CoinIsNotInWallet",3);
         } else {
             $encontrado=false;
             foreach ($arrayCoins as $indice => &$coin) {
                 if ($coin[0] == $datosCoin[0]) {
                     $encontrado=true;
                     if($cantidad > $coin[4]){
-                        throw new Exception("NotCoinsEnought");
+                        throw new Exception("NotCoinsEnought",4);
                     }else{
                         $coin[4] = $coin[4] - $cantidad;
                     }
@@ -45,7 +45,7 @@ class CacheWalletDataSource implements WalletDataSource
                 }
             }
             if(!$encontrado){
-                throw new Exception("CoinIsNotInWallet");
+                throw new Exception("CoinIsNotInWallet",3);
             }
             return Cache::put("wallet_" . $id_wallet, [$id_wallet,$arrayCoins]);
         }

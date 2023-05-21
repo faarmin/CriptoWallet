@@ -7,7 +7,7 @@ use Illuminate\Http\JsonResponse;
 
 class ApiCoinDataSource
 {
-    public function sellCoin($id_coin): ?Coin
+    public function sellCoin($id_coin,$cantidad): ?Coin
     {
         $api = new apiClient();
         $response = $api->getCoinById($id_coin);
@@ -19,7 +19,7 @@ class ApiCoinDataSource
             $simbolo = $jsonDes[0]['symbol'];
             $value_usd = $jsonDes[0]['price_usd'];
 
-            return new Coin($id_coin, $simbolo, $nombre, $value_usd, 1);
+            return new Coin($id_coin, $simbolo, $nombre, $value_usd, $cantidad);
         }
     }
 }

@@ -53,16 +53,4 @@ class GetWalletCriptosControllerTest extends TestCase
         $response->assertNotFound();
         $response->assertExactJson(['message' => 'A wallet with the specified ID was not found.']);
     }
-
-/*
-    public function errorNotValidId()
-    {
-        $this->userdata
-            ->expects('findWalletById')
-            ->andReturnNull();
-
-        $response = $this->get('/api/wallet/');
-        $response->assertBadRequest();
-        $response->assertExactJson(['message' => 'bad request error']);
-    }*/
 }
