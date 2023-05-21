@@ -7,6 +7,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\Exception;
 
 class CreateWalletController
 {
@@ -17,7 +18,13 @@ class CreateWalletController
     }
     public function create_wallet(string $id_user): JsonResponse
     {
-        $respuesta = $this->service_openwallet->execute($id_user);
+        try{
+            $respuesta = $this->service_openwallet->execute($id_user);
+        }catch (Exception $ex){
+            return response()->json([
+                'error' => 'There is no user white id '.$id_user,
+            ], Response::HTTP_OK);
+        }
         if ($respuesta instanceof \Illuminate\Http\JsonResponse) {
             return $respuesta;
         }

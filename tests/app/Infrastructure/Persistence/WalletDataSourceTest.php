@@ -26,7 +26,7 @@ class WalletDataSourceTest extends TestCase
      */
     public function checkIfWalletExistsWithKey1()
     {
-        Cache::shouldReceive('has')->once()->with('1')->andReturn(true);
+        Cache::shouldReceive('has')->once()->with('wallet_1')->andReturn(true);
         $class = new CacheWalletDataSource();
         $response = $class->walletExists('1');
         $this->assertEquals(true, $response);
@@ -43,6 +43,9 @@ class WalletDataSourceTest extends TestCase
         $this->expectExceptionMessage("UserNotFound");
 
         $response = $this->post('/api/wallet/open', ['user_id' => '100000']);
+        $response->assertExactJson([
+            'error' => 'There is no user white id 100000',
+        ]);
     }
     /**
      * @test
@@ -63,7 +66,7 @@ class WalletDataSourceTest extends TestCase
     {
         Cache::shouldReceive('has')->once()->with('wallet_0')->andReturn(true);
         $class = new CacheWalletDataSource();
-        $response = $class->walletExists('wallet_0');
+        $response = $class->walletExists('0');
         $this->assertEquals(true, $response);
     }
     /**
@@ -73,7 +76,7 @@ class WalletDataSourceTest extends TestCase
     {
         Cache::shouldReceive('has')->once()->with('wallet_10')->andReturn(false);
         $class = new CacheWalletDataSource();
-        $response = $class->walletExists('wallet_10');
+        $response = $class->walletExists('10');
         $this->assertEquals(false, $response);
     }
 }
