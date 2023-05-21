@@ -19,7 +19,7 @@ class Wallet
     }
     public function setCoin(array $array): void
     {
-        $this->array_coins[] = $array;
+        $this->array_coins = $array;
     }
 
     public function getWalletContent(): array

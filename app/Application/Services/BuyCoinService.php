@@ -9,6 +9,7 @@ use App\Domain\Wallet;
 use App\Infrastructure\Persistence\ApiCoinDataSource;
 use App\Infrastructure\Persistence\CacheWalletDataSource;
 use PHPUnit\Util\Exception;
+
 use function PHPUnit\Framework\throwException;
 
 class BuyCoinService
@@ -16,52 +17,48 @@ class BuyCoinService
     private WalletDataSource $walletDataSource;
     private CoinDataSource $coinDataSource;
 
-    /**
-     * @param WalletDataSource $userDataSource
-     */
-    public function __construct()
+
+    public function __construct($apiCoinDataSource = null)
     {
         $this->coinDataSource = new ApiCoinDataSource();
+
+        if ($apiCoinDataSource !== null) {
+            $this->coinDataSource = $apiCoinDataSource;
+        }
+
         $this->walletDataSource = new CacheWalletDataSource();
     }
-    public function execute(string $id_coin, string $id_wallet, float $amount): bool
+    public function execute(string $id_wallet, string $id_coin, float $amount): bool
     {
-        //check wallet
         if ($this->walletDataSource->walletExists($id_wallet)) {
-            //llamar a buycoin
-
             try {
                 $coin = $this->coinDataSource->buyCoin($id_coin, $amount);
-                //si no: buscar en wallet si existe esa coin
-                $wallet = $this->walletDataSource->findWalletById($id_wallet);
-                //si existe: actualizar amountUSD y el cambio (llamar funcion)
-                if ($this->walletHasCoin($wallet, $coin)){
-                    foreach ($wallet->getWalletContent() as $coin_in_wallet) {
-                        if ($coin_in_wallet->getCoinId() == $coin->getCoinId()) {
-                            $coin_in_wallet->setAmount($coin_in_wallet->getAmount() + $coin->getAmount());
-                            $coin_in_wallet->setValueUsd($coin->getValueUsd());
-                        }
-                    }
-                } else {
-                    $array = $wallet->getWalletContent();
-                    array_push($array, $coin);
-                    $wallet->setCoin($array);
-                }
-                $this->walletDataSource->insertNewObjectWallet($wallet);
             } catch (Exception $exception) {
                 throw new Exception("El id de la coin no es correcto", 45);
             }
-        }
-        throw new Exception("Wallet ID not found",50 );
-    }
+            $coin_as_array =
+                [$coin->getCoinId(),$coin->getName(),$coin->getSymbol(),$coin->getValueUsd(),$coin->getAmount()];
+            $wallet = $this->walletDataSource->findWalletById($id_wallet);
+            $in_wallet = false;
 
-    private function walletHasCoin(Wallet $wallet, Coin $coin): bool
-    {
-        foreach ($wallet->getWalletContent() as $coin_in_wallet) {
-            if ($coin_in_wallet->getCoinId() == $coin->getCoinId()) {
-                return true;
+            if (!empty($wallet->getWalletContent())) {
+                foreach ($wallet->getWalletContent() as &$coin_in_wallet) {
+                    if ($coin_in_wallet[0] == $coin_as_array[0]) {
+                        $in_wallet = true;
+
+                        $coin_in_wallet[4] += $coin_as_array[4];
+                        $coin_in_wallet[3] = $coin_as_array[3];
+                    }
+                }
             }
+            if (!$in_wallet) {
+                $array = $wallet->getWalletContent();
+                array_push($array, $coin_as_array);
+                $wallet->setCoin($array);
+            }
+            $this->walletDataSource->insertNewObjectWallet($wallet);
+            return true;
         }
-        return false;
+        throw new Exception("Wallet ID not found", 50);
     }
 }

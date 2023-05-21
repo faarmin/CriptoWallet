@@ -17,7 +17,7 @@ class ApiCoinDataSource implements CoinDataSource
         $coin_info_json =  $class->getCoinById($id_coin);
         $coin_info = json_decode($coin_info_json, true);
 
-        if (isEmpty($coin_info)) {
+        if (empty($coin_info)) {
             throw new Exception("El id de la coin no es correcto", 45);
         }
         return new

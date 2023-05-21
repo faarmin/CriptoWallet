@@ -27,7 +27,7 @@ class ApiClient
         $response = curl_exec($curl);
 
         curl_close($curl);
-        //echo $response;
+
         return $response;
     }
 }

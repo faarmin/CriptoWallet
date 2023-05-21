@@ -19,7 +19,7 @@ class CoinDataSourceTest extends TestCase
         $class = new ApiCoinDataSource();
         $coin = $class->buyCoin("5", 60);
 
-        $this->assertEquals($coin->getCoinId(), 'coin_5');
+        $this->assertEquals('coin_5', $coin->getCoinId());
     }
 
     /**

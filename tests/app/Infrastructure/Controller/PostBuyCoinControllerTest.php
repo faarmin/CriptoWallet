@@ -2,64 +2,64 @@
 
 namespace Tests\app\Infrastructure\Controller;
 
-use App\Application\DataSource\UserDataSource;
-use App\Domain\Coin;
-use App\Domain\User;
-use Exception;
+use App\Infrastructure\Controllers\PostBuyCoinController;
 use Illuminate\Http\Response;
-use Mockery;
+use Illuminate\Support\Facades\Cache;
+use Tests\app\Infrastructure\Dobles\ApiCoinDataSourceStub;
 use Tests\TestCase;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 class PostBuyCoinControllerTest extends TestCase
 {
-    private UserDataSource $userdata;
     /**
-     * @setUp
+     * @test
      */
-    protected function setUp():void
+    public function coinBuyBadRequest()
     {
-        parent::setUp();
-        $this->userdata = \Mockery::mock(UserDataSource::class);
-        $this->app->bind(UserDataSource::class, function () {
-            return $this->userdata;
-        });
+        $response = $this->post('/api/coin/buy', ['wallet_id' => '1','coin_id' => 1,'amount' => 50]);
+
+        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertExactJson(['message' => 'bad request error']);
     }
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithIdNotExisted()
+    public function errorBuyingCoinWithNonExistentId()
     {
-        $this->userdata
-            ->expects('findCoinById')
-            ->with(1)
-            ->andReturnNull();
-        $response = $this->get('/api/coin/buy/1/1');
+        Cache::shouldReceive('has')->once()->with('wallet_1')->andReturn(true);
+
+        $response = $this->post('/api/coin/buy', ['wallet_id' => '1','coin_id' => '-1','amount' => 50]);
+
         $response->assertNotFound();
         $response->assertExactJson(['message' => 'A coin with the specified ID was not found.']);
     }
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithIdExisted()
+    public function errorBuyingCoinWithNonExistentWallet()
     {
-        $this->userdata
-            ->expects('findCoinById')
-            ->with(1)
-            ->andReturn(new Coin(1));
-        $response = $this->get('/api/coin/buy/1/1');
-        $response->assertExactJson(['status' => 'Ok', 'message' => 'successful operation']);
+        Cache::shouldReceive('has')->once()->with('wallet_1')->andReturn(false);
+
+        $response = $this->post('/api/coin/buy', ['wallet_id' => '1','coin_id' => '1','amount' => 50]);
+
+        $response->assertNotFound();
+        $response->assertExactJson(['message' => 'A wallet with the specified ID was not found.']);
     }
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithWrongId()
+    public function buyingCoinSuccess()
     {
-        $this->userdata
-            ->expects('findCoinById')
-            ->with(1)
-            ->andReturn(new Coin(-1));
-        $response = $this->get('/api/coin/buy/1/1');
-        $response->assertBadRequest();
-        $response->assertExactJson(['message' => 'bad request error']);
+        $controller = new PostBuyCoinController(new ApiCoinDataSourceStub());
+        Cache::shouldReceive('has')->once()->with('wallet_1')->andReturn(true);
+        Cache::shouldReceive('get')->once()->with('wallet_1')->andReturn(['1',[]]);
+        Cache::shouldReceive('put')->once()
+            ->with('wallet_1', ['1',[['coin_1','Litecoin','LTC',60,50]]])->andReturn(true);
+
+        $response = $controller->buyCoin('1', '1', 50);
+
+        $this->assertEquals('{"status":"Ok","message":"successful operation"}', $response->getContent());
     }
 }

@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateWalletController
 {
-    private CreateWalletService $service_openwallet;
+    private CreateWalletService $service_open_wallet;
     public function __construct()
     {
-        $this->service_openwallet = new CreateWalletService();
+        $this->service_open_wallet = new CreateWalletService();
     }
     public function createWallet(string $id_user): JsonResponse
     {
-        $respuesta = $this->service_openwallet->execute($id_user);
-        if ($respuesta instanceof \Illuminate\Http\JsonResponse) {
+        $respuesta = $this->service_open_wallet->execute($id_user);
+        if ($respuesta instanceof JsonResponse) {
             return $respuesta;
         }
         return response()->json([

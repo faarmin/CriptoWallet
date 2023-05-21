@@ -9,6 +9,10 @@ use App\Domain\Wallet;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Cache;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
+
 class CacheUserDataSource implements UserDataSource
 {
     public function findUserById(string $id_user): bool

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Infrastructure\Controllers;
+
+use App\Application\DataSource\CoinDataSource;
 use App\Application\DataSource\UserDataSource;
 use App\Application\Services\BuyCoinService;
 use Illuminate\Http\JsonResponse;
@@ -12,29 +14,31 @@ class PostBuyCoinController extends BaseController
 {
     private BuyCoinService $buyCoinService;
 
-    /**
-     * @param UserDataSource $userDataSource
-     */
-    public function __construct(BuyCoinService $buyCoinService)
+
+    public function __construct($apiCoinDataSource = null)
     {
-        $this->buyCoinService = $buyCoinService;
+        $this->buyCoinService = new BuyCoinService();
+
+        if ($apiCoinDataSource !== null) {
+            $this->buyCoinService = new BuyCoinService($apiCoinDataSource);
+        }
     }
-    public function __invoke(string $id_wallet, string $id_coin, float $amount): JsonResponse
+    public function buyCoin(string $id_wallet, string $id_coin, float $amount): JsonResponse
     {
-        try{
-            $this->buyCoinService->execute($id_coin, $id_wallet, $amount);
-        }catch (Exception $ex) {
-            if ($ex->getCode() == 45){
+        try {
+            $this->buyCoinService->execute($id_wallet, $id_coin, $amount);
+        } catch (Exception $ex) {
+            if ($ex->getCode() == 45) {
                 return response()->json([
                     'message' => 'A coin with the specified ID was not found.',
                 ], Response::HTTP_NOT_FOUND);
-            }
-            else if ($ex->getCode() == 50){
+            } elseif ($ex->getCode() == 50) {
                 return response()->json([
 
                 'message' => 'A wallet with the specified ID was not found.',
-            ], Response::HTTP_NOT_FOUND);
-        }}
+                ], Response::HTTP_NOT_FOUND);
+            }
+        }
         return response()->json([
             'status' => 'Ok',
             'message' => 'successful operation',
