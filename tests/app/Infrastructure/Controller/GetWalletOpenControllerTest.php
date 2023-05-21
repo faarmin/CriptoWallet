@@ -4,6 +4,7 @@ namespace Tests\app\Infrastructure\Controller;
 
 use App\Application\DataSource\UserDataSource;
 use App\Domain\User;
+use App\Infrastructure\Persistence\CacheUserDataSource;
 use Exception;
 use Illuminate\Http\Response;
 use Mockery;
@@ -27,12 +28,18 @@ class GetWalletOpenControllerTest extends TestCase
     /**
      * @test
      */
-    public function CheckIfRequestFuncionIsReadyAndCallTheController()
+    public function CheckIfRequestFunctionIsReadyAndCallTheController()
     {
+        //insertar user
+        $class = new CacheUserDataSource();
+        $class->insertUser('1');
+
         $response = $this->post('/api/wallet/open',['user_id' => '1']);
-        $response->assertStatus(Response::HTTP_OK);
+
         $response->assertExactJson([
-            'user_id' => 'user_1',
+            'wallet_id' => 'wallet_1',
         ]);
+        $response->assertStatus(Response::HTTP_OK);
+
     }
 }

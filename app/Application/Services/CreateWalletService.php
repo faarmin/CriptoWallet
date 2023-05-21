@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Application\Services;
 
 use App\Application\DataSource\UserDataSource;
@@ -24,8 +25,8 @@ class CreateWalletService
     }
     public function execute(string $id_user): mixed
     {
-        $user=$this->userDataSource->findUserById($id_user);
-        if(!$user){
+        $user = $this->userDataSource->findUserById($id_user);
+        if (!$user) {
             //Lanzar Excepcion
             return response()->json([
                 'message' => 'A user with the specified ID was not found.',
