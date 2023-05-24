@@ -9,7 +9,9 @@ use Exception;
 use Illuminate\Http\Response;
 use Mockery;
 use Tests\TestCase;
-
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
 class PostBuyCoinControllerTest extends TestCase
 {
     private UserDataSource $userdata;
@@ -27,7 +29,7 @@ class PostBuyCoinControllerTest extends TestCase
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithIdNotExisted()
+    public function errorBuyingCoinWithIdNotExisted()
     {
         $this->userdata
             ->expects('findCoinById')
@@ -40,7 +42,7 @@ class PostBuyCoinControllerTest extends TestCase
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithIdExisted()
+    public function errorBuyingCoinWithIdExisted()
     {
         $this->userdata
             ->expects('findCoinById')
@@ -52,7 +54,7 @@ class PostBuyCoinControllerTest extends TestCase
     /**
      * @test
      */
-    public function ErrorBuyingCoinWithWrongId()
+    public function errorBuyingCoinWithWrongId()
     {
         $this->userdata
             ->expects('findCoinById')

@@ -12,6 +12,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/status', GetStatusController::class);
 Route::post('/coin/sell', SellCoinFormRequest::class);
 Route::post('/wallet/open', CreateWalletFromRequest::class);
-Route::get('/coin/buy/{id}/{id2}', PostBuyCoinController::class);
-Route::get('/wallet/{wallet_id}', GetWalletCriptosController::class);
 Route::get('/user/{id}', CreateUserController::class);

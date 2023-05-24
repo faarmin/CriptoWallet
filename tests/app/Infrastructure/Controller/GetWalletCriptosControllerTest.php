@@ -10,6 +10,10 @@ use Illuminate\Http\Response;
 use Mockery;
 use Tests\TestCase;
 
+/**
+ * @SuppressWarnings(PHPMD.StaticAccess)
+ */
+
 class GetWalletCriptosControllerTest extends TestCase
 {
     private UserDataSource $userdata;
