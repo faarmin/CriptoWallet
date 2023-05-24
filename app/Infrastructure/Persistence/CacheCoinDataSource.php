@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Cache;
 
 class CacheCoinDataSource implements CoinDataSource
 {
-    public function insertCoin(string $id_coin, string $symbol, string $name, float $value_usd,float $amount): ?Coin
+    public function insertCoin(string $id_coin, string $symbol, string $name, float $value_usd): ?Coin
     {
-        $new_coin = new Coin("coin_".$id_coin,$symbol,$name,$value_usd,$amount);
-        Cache::put("coin_".$id_coin,["coin_".$id_coin,$symbol,$name,$value_usd,$amount]);
+        $new_coin = new Coin("coin_".$id_coin,$symbol,$name,$value_usd,1);
+        Cache::put("coin_".$id_coin,["coin_".$id_coin,$symbol,$name,$value_usd,1]);
         return $new_coin;
     }
 

@@ -7,7 +7,7 @@ use App\Domain\User;
 
 Interface CoinDataSource
 {
-    public function insertCoin(string $id_coin, string $symbol, string $name, float $value_usd,float $amount): ?Coin;
+    public function insertCoin(string $id_coin, string $symbol, string $name, float $value_usd): ?Coin;
 
     public function findCoinById(string $id_coin): ?Coin;
 

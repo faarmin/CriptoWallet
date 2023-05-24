@@ -50,4 +50,12 @@ class CacheWalletDataSource implements WalletDataSource
             return Cache::put("wallet_" . $id_wallet, [$id_wallet,$arrayCoins]);
         }
     }
+
+    public function findWalletById(string $id_wallet): ?Wallet
+    {
+        $wallet = Cache::get("wallet" . $id_wallet);
+        $new_wallet = new Wallet($wallet[0]);
+        $new_wallet->setCoin($wallet[1]);
+        return $new_wallet;
+    }
 }

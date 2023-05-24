@@ -18,9 +18,9 @@ class CoinDataSourceTest extends TestCase
         Cache::shouldReceive('put')->once()->with('coin_0',['coin_0','A','A',50,90])->andReturn(new Coin('coin_0','A','A',50,90));
 
         $class = new CacheCoinDataSource();
-        $response = $class->insertCoin('0','A','A',50,90);
+        $response = $class->insertCoin('0','A','A',50);
 
-        $this->assertEquals(new Coin('coin_0','A','A',50,90), $response);
+        $this->assertEquals(new Coin('coin_0','A','A',50,1), $response);
     }
 
     /**
@@ -29,13 +29,13 @@ class CoinDataSourceTest extends TestCase
     public function findCoinByIdSuccess()
     {
         $class = new CacheCoinDataSource();
-        $class->insertCoin('0','A','A',50,60);
+        $class->insertCoin('0','A','A',50);
 
-        Cache::shouldReceive('get')->once()->with('coin_0')->andReturn(new Coin('coin_0','A','A',50,60));
+        Cache::shouldReceive('get')->once()->with('coin_0')->andReturn(new Coin('coin_0','A','A',50,1));
 
         $response = $class->findCoinById('0');
 
-        $this->assertEquals(new Coin('coin_0','A','A',50,60), $response);
+        $this->assertEquals(new Coin('coin_0','A','A',50,1), $response);
     }
 
     /**
@@ -57,7 +57,7 @@ class CoinDataSourceTest extends TestCase
     public function CoinExistsSuccess()
     {
         $class = new CacheCoinDataSource();
-        $class->insertCoin('1','A','A',50,60);
+        $class->insertCoin('1','A','A',50);
 
         Cache::shouldReceive('has')->once()->with('coin_1')->andReturn(true);
 

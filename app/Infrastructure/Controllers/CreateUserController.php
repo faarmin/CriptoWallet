@@ -14,14 +14,14 @@ use Illuminate\Support\Facades\Validator;
 
 class CreateUserController extends BaseController
 {
-    private CacheUserDataSource $cacheUser;
+    private CacheUserDataSource $cache_user;
     public function __construct()
     {
-        $this->cacheUser = new CacheUserDataSource();
+        $this->cache_user = new CacheUserDataSource();
     }
     public function __invoke(string $id_user): JsonResponse
     {
-        $this->cacheuser->insertUser($id_user);
+        $this->cache_user->insertUser($id_user);
         return response()->json([
             'user_id' => $id_user,
         ], Response::HTTP_OK);
