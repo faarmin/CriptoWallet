@@ -28,11 +28,11 @@ class BuyCoinService
 
         $this->walletDataSource = new CacheWalletDataSource();
     }
-    public function execute(string $id_wallet, string $id_coin, float $amount): bool
+    public function execute(string $id_wallet, string $id_coin, float $amount_usd): bool
     {
         if ($this->walletDataSource->walletExists($id_wallet)) {
             try {
-                $coin = $this->coinDataSource->buyCoin($id_coin, $amount);
+                $coin = $this->coinDataSource->buyCoin($id_coin, $amount_usd);
             } catch (Exception $exception) {
                 throw new Exception("El id de la coin no es correcto", 45);
             }
