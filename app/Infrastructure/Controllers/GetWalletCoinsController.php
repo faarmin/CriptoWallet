@@ -23,7 +23,6 @@ class GetWalletCoinsController
             $response = $this->service->getCoins($int);
         } catch (Exception $ex) {
             return response()->json([
-
                 'message' => 'A wallet with the specified ID was not found.',
             ], Response::HTTP_NOT_FOUND);
         }
