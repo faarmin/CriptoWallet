@@ -11,7 +11,7 @@ use function PHPUnit\Framework\isEmpty;
 
 class ApiCoinDataSource implements CoinDataSource
 {
-    public function buyCoin(string $id_coin, float $amount): ?Coin
+    public function buyCoin(string $id_coin, float $amount_usd): ?Coin
     {
         $class = new ApiClient();
         $coin_info_json =  $class->getCoinById($id_coin);
@@ -20,13 +20,14 @@ class ApiCoinDataSource implements CoinDataSource
         if (empty($coin_info)) {
             throw new Exception("El id de la coin no es correcto", 45);
         }
+        $amount_coins = $amount_usd/$coin_info[0]['price_usd'];
         return new
         Coin(
             "coin_" . $coin_info[0]['id'],
             $coin_info[0]['symbol'],
             $coin_info[0]['name'],
             $coin_info[0]['price_usd'],
-            $amount
+            $amount_coins
         );
     }
 

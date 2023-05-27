@@ -55,10 +55,11 @@ class CacheWalletDataSource implements WalletDataSource
         foreach ($arrayCoins as $indice => &$coin) {
             if ($coin[0] == $datosCoin[0]) {
                 $encontrado = true;
-                if ($cantidad > $coin[4]) {
+                $cantidad_coins = $cantidad /$coin[3];
+                if ($cantidad_coins > $coin[4]) {
                     throw new Exception("NotCoinsEnought", 4);
                 }
-                $coin[4] = $coin[4] - $cantidad;
+                $coin[4] = $coin[4] - $cantidad_coins;
                 if ($coin[4] == 0) {
                     unset($arrayCoins[$indice]);
                 }
