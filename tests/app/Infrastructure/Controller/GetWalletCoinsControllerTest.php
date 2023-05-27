@@ -44,17 +44,16 @@ class GetWalletCoinsControllerTest extends TestCase
         $response = $this->get('/api/wallet/1');
 
         $response->assertExactJson([[
-            "coin_id"=> "10",
-            "name"=> "ETC",
-            "symbol"=> "VIAGRA",
-            "amount"=> 1,
-            "value_usd"=> "90",
+            "coin_id" => "10",
+            "name" => "ETC",
+            "symbol" => "VIAGRA",
+            "amount" => 1,
+            "value_usd" => "90",
         ],
-            ["coin_id"=> "3",
-            "name"=> "ETC",
-            "symbol"=> "VIAGRA",
-            "amount"=> 1,
-            "value_usd"=> "90",]]);
-
+            ["coin_id" => "3",
+            "name" => "ETC",
+            "symbol" => "VIAGRA",
+            "amount" => 1,
+            "value_usd" => "90",]]);
     }
 }
