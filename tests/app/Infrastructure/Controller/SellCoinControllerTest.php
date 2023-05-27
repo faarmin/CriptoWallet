@@ -26,7 +26,7 @@ class SellCoinControllerTest extends TestCase
     /**
      * @test
      */
-    public function coinWithGivenidDoesNotExist()
+    public function coinWithGivenIdDoesNotExist()
     {
         Cache::shouldReceive('has')
             ->once()
@@ -47,7 +47,7 @@ class SellCoinControllerTest extends TestCase
     /**
      * @test
      */
-    public function walletWithGivenidDoesNotExist()
+    public function walletWithGivenIdDoesNotExist()
     {
         Cache::shouldReceive('has')
             ->once()

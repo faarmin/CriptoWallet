@@ -4,7 +4,7 @@ namespace App\Application\DataSource;
 
 use App\Domain\Wallet;
 
-Interface WalletDataSource
+interface WalletDataSource
 {
     public function insertWallet(string $id_wallet): Wallet;
 
@@ -12,6 +12,5 @@ Interface WalletDataSource
 
     public function walletExists(string $id_wallet): bool;
 
-
+    public function getWalletCoins(string $id_wallet): array;
 }
-
