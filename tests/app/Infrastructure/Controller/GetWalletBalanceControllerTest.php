@@ -2,23 +2,18 @@
 
 namespace Tests\app\Infrastructure\Controller;
 
-use App\Application\DataSource\UserDataSource;
-use App\Domain\User;
-use App\Domain\Wallet;
-use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cache;
-use Mockery;
 use Tests\TestCase;
 
-class GetWalletCoinsControllerTest extends TestCase
+class GetWalletBalanceControllerTest extends TestCase
 {
     /**
      * @test
      */
     public function errorWalletIdNotFound()
     {
-        $response = $this->get('/api/wallet/1');
+        $response = $this->get('/api/wallet/1/balance');
 
         $response->assertStatus(Response::HTTP_NOT_FOUND);
         $response->assertExactJson([
@@ -41,20 +36,9 @@ class GetWalletCoinsControllerTest extends TestCase
             ->with('wallet_1')
             ->andReturn(['1',[['10', 'ETC', 'VIAGRA', '90', 1],['3', 'ETC', 'VIAGRA', '90', 1]]]);
 
-        $response = $this->get('/api/wallet/1');
+        $response = $this->get('/api/wallet/1/balance');
 
-        $response->assertExactJson([[
-            "coin_id" => "10",
-            "name" => "ETC",
-            "symbol" => "VIAGRA",
-            "amount" => 1,
-            "value_usd" => "90",
-        ],
-            ["coin_id" => "3",
-            "name" => "ETC",
-            "symbol" => "VIAGRA",
-            "amount" => 1,
-            "value_usd" => "90",]]);
+        $response->assertExactJson(["balance_usd" => 180]);
     }
 
     /**
@@ -72,8 +56,8 @@ class GetWalletCoinsControllerTest extends TestCase
             ->with('wallet_1')
             ->andReturn(['1',[]]);
 
-        $response = $this->get('/api/wallet/1');
+        $response = $this->get('/api/wallet/1/balance');
 
-        $response->assertExactJson([]);
+        $response->assertExactJson(["balance_usd" => 0]);
     }
 }
