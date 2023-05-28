@@ -98,7 +98,7 @@ class SellCoinControllerTest extends TestCase
             ->once()
             ->with('wallet_1', ['1',[['10', 'ETC', 'VIAGRA', '90', 1],['1', 'ETC', 'VIAGRA', '90', 3]]])
             ->andReturn(true);
-        $response = $this->post('/api/coin/sell', ['coin_id' => '1','wallet_id' => '1','amount_usd' => 1]);
+        $response = $this->post('/api/coin/sell', ['coin_id' => '1','wallet_id' => '1','amount_usd' => 90]);
         $response->assertStatus(Response::HTTP_OK);
         $response->assertExactJson([
             'mensaje' => 'Success selling coin',
